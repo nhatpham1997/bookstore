@@ -1,0 +1,118 @@
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+}
+
+a {
+  color: #222;
+  text-decoration: none;
+}
+
+h2 {
+  margin: 0 !important;
+  font-size: 30px !important;
+}
+
+small {
+  color: #888 !important;
+  font-size: 15px !important;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.home {
+  background-color: #fff;
+}
+
+.nav {
+  background-color: #c8bca7;
+}
+
+.header-menu {
+  display: flex;
+  justify-content: space-between;
+}
+
+.logo {
+  width: 1%;
+  display: flex;
+  align-items: center;
+}
+.logo.a {
+  padding: 20px 0;
+}
+
+.logo-dimensions {
+  min-width: 170px;
+  width: 170px;
+}
+
+.nav-ul {
+  display: flex;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+ul.nav-ul li {
+  padding: 25px 20px;
+}
+ul.nav-ul li a {
+  font-size: 16px;
+  padding: 25px 0;
+  color: #222;
+}
+ul.nav-ul li a:hover {
+  color: #fff;
+  text-decoration: none;
+}
+ul.nav-ul li::selection {
+  background-color: #888;
+}
+
+.header-links {
+  display: flex;
+  align-items: center;
+}
+
+.search-dimensions {
+  width: 30px;
+}
+
+.shop-dimensions {
+  margin-left: 30px;
+  width: 30px;
+}
+
+.layer-slider {
+  height: 445px;
+}
+
+.slider-dimensions {
+  margin-bottom: 30px;
+}
+
+.item-slick {
+  margin-top: 20px;
+}
+.item-slick img {
+  width: 164px;
+  height: auto;
+}
+.item-slick h3 {
+  margin-top: 20px;
+  padding: 0 20px;
+}
+.item-slick p {
+  margin-top: 10px;
+  padding: 0 20px;
+}
+.item-slick a {
+  margin-top: 10px;
+  padding: 0 20px;
+}
