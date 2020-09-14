@@ -1,44 +1,38 @@
-export default function Nav() {
+import Container from 'react-bootstrap/Container';
+import Navbar from 'react-bootstrap/Navbar';
+import Nav from 'react-bootstrap/Nav';
+import Link from 'next/link';
+import styles from '../styles/Nav.module.css';
+
+export default function NavCom() {
     return (
-        <div className="nav">
-            <div className="container">
-                <div className="row">
-                    <div className="col-sm-12">
-                        <div className="header-menu">
-                            <div className="logo">
-                                <a href="/">
-                                    <img src="/logobookstore.png" className="logo-dimensions" alt="Bookshop"></img>
-                                </a>
+        <Navbar collapseOnSelect expand="lg" className={styles.navbar_bg}>
+            <Container>
+                <Navbar.Brand><Link href="/"><a><img src="/logobookstore.png" className={styles.logo_dimensions} alt="Bookshop"></img></a></Link></Navbar.Brand>
+                <Navbar.Toggle aria-controls="responsive-navbar-nav"/>
+                <Navbar.Collapse id="responsive-navbar-nav">
+                    <Nav className="mr-auto">
+                        <Link href="/"><a>Home</a></Link>
+                        <Link href="/books?page=1"><a>Books</a></Link>
+                        <Link href="#"><a>Library</a></Link>
+                        <Link href="#"><a>Journal</a></Link>
+                        <Link href="#"><a>Buy Now</a></Link>
+                    </Nav>
+                    <Nav>
+                        <Nav.Link href="#deets">
+                            <div className={styles.search}>
+                                <input type="text" placeholder=" "/>
+                                    <div>
+                                        <img src="/search.svg"/>
+                                    </div>
                             </div>
-                            <nav className="main-menu" role="navigation">
-                                <ul className="nav-ul">
-                                    <li className="menu-item">
-                                        <a href="#" aria-current="page">Home</a>
-                                    </li>
-                                    <li className="menu-item">
-                                        <a href="#" aria-current="page">Books</a>
-                                    </li>
-                                    <li className="menu-item">
-                                        <a href="#" aria-current="page">Library</a>
-                                    </li>
-                                    <li className="menu-item">
-                                        <a href="#" aria-current="page">Journal</a>
-                                    </li>
-                                    <li className="menu-item">
-                                        <a href="#" aria-current="page">Buy Now</a>
-                                    </li>
-                                </ul>
-                            </nav>
-                            <div className="header-links">
-                                <a href="#" className="search-btn">
-                                    <img className="search-dimensions" src="/search.svg"></img>
-                                    <img className="shop-dimensions" src="/shop.svg"></img>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+                        </Nav.Link>
+                        <Nav.Link eventKey={2} href="#memes">
+                            <img className={styles.shop_dimensions} src="/shop.svg"/>
+                        </Nav.Link>
+                    </Nav>
+                </Navbar.Collapse>
+            </Container>
+            </Navbar>
     )
 }

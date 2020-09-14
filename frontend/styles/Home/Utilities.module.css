@@ -1,0 +1,53 @@
+.utilities {
+  margin-bottom: 40px;
+}
+
+.utilities .card a {
+  display: block;
+  position: relative;
+  overflow: hidden;
+}
+
+.utilities .card a:hover {
+  cursor: pointer;
+}
+
+.utilities .card:hover a .card_image {
+  transform: scale(1.2);
+}
+
+.utilities .card .card_image {
+  display: block;
+  position: relative;
+  z-index: 1;
+  line-height: 1;
+  width: 100%;
+  height: auto;
+  transition: all .5s ease-out;
+}
+
+.utilities .card .card_text {
+  position: absolute;
+  z-index: 3;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  text-transform: uppercase;
+}
+
+.utilities .card .card_text strong {
+  color: #ffffff;
+  font-size: 30px;
+  font-weight: 300;
+}
+
+.utilities .card .card_text p {
+  color: #ffffff;
+  font-size: 15px;
+  border-top: 1px solid #fff;
+  padding-top: 10px;
+}
+
+.shipping {
+  padding-bottom: 40px;
+}

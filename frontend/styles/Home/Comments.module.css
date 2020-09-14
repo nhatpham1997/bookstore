@@ -1,0 +1,20 @@
+.comments {
+  margin-bottom: 100px;
+}
+
+.comments_header {
+  margin-bottom: 40px;
+}
+
+.comment_content {
+  display: flex;
+}
+
+.avatar {
+  padding: 0 20px 15px 0;
+}
+
+.avatar_dimensions {
+  border-radius: 50%;
+  width: 80px;
+}

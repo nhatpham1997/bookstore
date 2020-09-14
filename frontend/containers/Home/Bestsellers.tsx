@@ -1,5 +1,10 @@
 import Carousel from 'react-multi-carousel';
 import { BookModel } from '../../api/Book';
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+import Link from 'next/link';
+import styles from '../../styles/Home/Bestsellers.module.css';
 
 export interface BestsellersProps {
     books: BookModel[];
@@ -14,23 +19,23 @@ export default function Bestsellers({ books }: BestsellersProps) {
         },
         tablet: {
             breakpoint: { max: 1024, min: 464 },
-            items: 5,
+            items: 3,
             slidesToSlide: 1 // optional, default to 1.
         },
         mobile: {
             breakpoint: { max: 464, min: 0 },
-            items: 1,
+            items: 2,
             slidesToSlide: 1 // optional, default to 1.
         }
     };
     return (
-        <div className="container">
-            <div className="row">
-                <div className="col-sm-12">
+        <Container className={styles.bestsellers}>
+            <Row>
+                <Col sm="12" className={styles.title_dimensions}>
                     <h2>Bestsellers</h2>
                     <small>Top selling books of 2020</small>
-                </div>
-                <div className="col-sm-12">
+                </Col>
+                <Col sm="12">
                     <Carousel
                         responsive={responsive}
                         autoPlay={true}
@@ -38,16 +43,18 @@ export default function Bestsellers({ books }: BestsellersProps) {
                         ssr={true}
                     >
                         {books?.map((item) => (
-                            <div key={item.id} className="item-slick">
-                                <img src={item.picture}></img>
-                                <h3>{item.name}</h3>
-                                <p>{item.category}</p>
-                                <a>€{item.price}</a>
-                            </div>
+                            <Link key={item.id} href="/book/[id]" as={`/book/${item.id}`}>
+                                <div key={item.id} className={styles.item_slick}>
+                                    <img src={item.picture}></img>
+                                    <h3>{item.name}</h3>
+                                    <p>{item.category}</p>
+                                    <a>€ {item.price}</a>
+                                </div>
+                            </Link>
                         ))}
                     </Carousel>
-                </div>
-            </div>
-        </div>
+                </Col>
+            </Row>
+        </Container>
     )
 }

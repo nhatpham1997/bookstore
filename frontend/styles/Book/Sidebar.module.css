@@ -1,0 +1,48 @@
+.sidebar {
+  margin-top: 40px;
+}
+
+.card_header {
+  font-size: 24px;
+  font-weight: 300;
+}
+
+.card_item {
+  display: flex;
+  border-bottom: solid 1px #eee;
+}
+
+.card_item:hover {
+  cursor: pointer;
+}
+
+.card_item:hover .card_name {
+  color: #dd1f26;
+}
+
+.card_item img {
+  max-width: 50px;
+  height: auto;
+  margin-right: 10px;
+}
+
+.card_name {
+  margin: 0;
+  width: auto;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 25px;
+  -webkit-line-clamp: 3;
+  height: auto;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+}
+
+.card_price {
+  font-size: 14px;
+  margin: 0;
+}
+
+.card_dimensions {
+  margin-bottom: 40px;
+}

@@ -1,0 +1,33 @@
+.product_img {
+  width: 100%;
+}
+
+.product_title {
+  margin-bottom: 20px;
+}
+
+.product_title h3 {
+  font-size: 40px;
+  font-weight: 400;
+  margin: 0;
+}
+
+.product_title small {
+  font-size: 14px;
+  color: #888;
+}
+
+.product_content p {
+  color: #888;
+  
+}
+
+.product_dimensions {
+  margin-top: 30px;
+}
+
+.price_styles {
+  font-size: 40px;
+  color: #888;
+  font-weight: 300;
+}
