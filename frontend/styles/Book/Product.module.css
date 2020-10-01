@@ -31,3 +31,44 @@
   color: #888;
   font-weight: 300;
 }
+
+.btn_add_to_cart{
+  background: #eeeeee;
+  padding: 7px 20px;
+  border: none;
+}
+
+.btn_add_to_cart:hover{
+  background-color: #1b1b1b;
+  color: white;
+}
+
+.inline-group {
+  max-width: 9rem;
+  padding: .5rem;
+}
+
+.count {
+  padding: 6px 30px 5px;
+}
+
+.add_product {
+  display: inline-block;
+  width: auto;
+  margin-right: 20px;
+  background-color: #eeeeee;
+}
+
+.product_button {
+  border: none;
+  padding: 7px 20px;
+}
+
+.product_button:hover {
+  background-color: #1b1b1b;
+  color: white;
+}
+
+.star_rating {
+  margin-bottom: 30px;
+}

@@ -13,4 +13,9 @@
   font-size: 15px;
   font-weight: 400;
 }
-  
+
+.copyright {
+  margin: 40px 0;
+  border-top: solid 1px #eee;
+  padding-top: 40px;
+}

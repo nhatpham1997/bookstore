@@ -1,7 +1,6 @@
 import React from 'react';
 import Pagination from 'react-bootstrap/Pagination';
 import Link from 'next/link';
-import { ParsedUrlQuery } from "querystring";
 import PageItem from 'react-bootstrap/PageItem'
 import { useRouter } from "next/router";
 import getAsString from '../../getAsString';
@@ -9,15 +8,11 @@ import getAsString from '../../getAsString';
 
 export interface BooksPaginationProps {
   totalPages: number;
-  page: number;
 }
 
 function BooksPagination({ totalPages }: BooksPaginationProps) {
-    let {query} = useRouter();
-    let page=parseInt(getAsString(query.page) || '1')
-
-    console.log(page)
-  let active = 1;
+  let {query} = useRouter();
+  let page = parseInt(getAsString(query.page) || '1');
   let items = [];
   for (let number = 1; number <= totalPages; number++) {
     items.push(
@@ -25,22 +20,54 @@ function BooksPagination({ totalPages }: BooksPaginationProps) {
         pathname: '/books',
         query: { page: number }
       }}
-        shallow
+        key={number}
         passHref
       >
-        
           <PageItem key={number} active={number == page}>
             {number}
           </PageItem>
-        
       </Link>
     );
   }
+
+  const prevHandle = () => {
+    if(page > 1){
+      return (
+        <Link href={{
+          pathname: '/books',
+          query: { page: page-1 }
+        }}
+        passHref
+        >
+          <Pagination.Prev/>
+        </Link>
+      )
+    }else{
+      return;
+    }
+  }
+
+  const nextHandle = () => {
+    if(page < totalPages){
+      return (
+        <Link href={{
+          pathname: '/books',
+          query: { page: page+1 }
+        }}
+        passHref
+        >
+          <Pagination.Next/>
+        </Link>
+      )
+    }else{
+      return;
+    }
+  }
   return (
     <Pagination>
-      <Pagination.Prev />
+      {prevHandle()}
       {items}
-      <Pagination.Next />
+      {nextHandle()}
     </Pagination>
   )
 }

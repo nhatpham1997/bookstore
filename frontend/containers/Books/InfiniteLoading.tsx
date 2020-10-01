@@ -1,15 +1,11 @@
-import { BookModel } from "../api/Book";
-import { GetServerSideProps } from "next";
-import Container from "react-bootstrap/Container";
+import InfiniteScroll from 'react-infinite-scroller';
+import { useEffect, useState } from 'react';
 import Col from "react-bootstrap/Col";
+import Link from "next/link";
+import styles from '../../styles/Books/InfiniteLoading.module.css';
 import Row from "react-bootstrap/Row";
-import Sidebar from "../containers/Book/Sidebar";
-import NavCom from "../components/Nav";
-import Footer from "../components/Footer";
-import InfiniteLoading from '../containers/Books/InfiniteLoading';
-import styles from '../styles/Books/index.module.css';
 
-const books = [
+const booksData = [
     {
         id: 1,
         name: 'American Fun',
@@ -350,54 +346,52 @@ const books = [
     },
 ];
 
-export interface BooksProps {
-    sidebar: BookModel[];
-}
+export default function InfiniteLoading() {
+    const [hasMoreItems, sethasMoreItems] = useState(true);
+    const [totalBooks, settotalBooks] = useState([]);
+    const [books, setBooks] = useState(booksData.slice(0, 9));
+    const totalPage = Math.ceil(books.length/3);
+    const items = [];
+    books.map((item) => {
+        items.push(
+            <Col sm="4" key={item.id}>
+                <Link href="/book/[id]" as={`/book/${item.id}`}>
+                    <div className={styles.product_item}>
+                        <div className={styles.item_image}>
+                            <img src={item.picture}></img>
+                        </div>
+                        <div className={styles.item_info}>
+                            <h3>{item.name}</h3>
+                            <small>{item.category}</small>
+                            <p>€{item.price}</p>
+                        </div>
+                    </div>
+                </Link>
+            </Col>
+        )
+    })
+    const handleLoadMore = (page) => {
+        console.log(page);
+        console.log(totalPage);
+        const ofset = 0;
+        const limit = 3;
+        if(page === totalPage){
+            sethasMoreItems(false);
+        }else {
+            
+            const moreBooks = books.slice(ofset + ofset*page, limit*page);
+            setBooks(books.concat(moreBooks))
+        }
+    }
 
-export default function Books({ sidebar }: BooksProps) {
-    return (
-        <div>
-            <NavCom />
-            <Container>
-                <Row>
-                    <Col sm="12">
-                        <h2>Book</h2>
-                        <small>Showing 1-12 of 13 results</small>
-                    </Col>
-                    <Col sm="12">
-                    </Col>
-                </Row>
-                <Row>
-                    <Col sm="3">
-                        <Sidebar books={sidebar} />
-                    </Col>
-                    <Col sm="9">
-                        
-                            {/* {books?.map((item) => (
-                                <Col sm="4" key={item.id}>
-                                    <Link href="/book/[id]" as={`/book/${item.id}`}>
-                                        <div className={styles.product_item}>
-                                            <div className={styles.item_image}>
-                                                <img src={item.picture}></img>
-                                            </div>
-                                            <div className={styles.item_info}>
-                                                <h3>{item.name}</h3>
-                                                <small>{item.category}</small>
-                                                <p>€{item.price}</p>
-                                            </div>
-                                        </div>
-                                    </Link>
-                                </Col> */}
-                                <InfiniteLoading/>
-                    </Col>
-                </Row>
-            </Container>
-            <Footer />
-        </div>
-    )
-}
-
-export const getServerSideProps: GetServerSideProps = async (ctx) => {
-    const sidebar = books.filter(books => books.id < 5);
-    return { props: { books, sidebar } }
+    return <InfiniteScroll
+        pageStart={0}
+        loadMore={handleLoadMore}
+        hasMore={hasMoreItems}
+        loader={<div className="loader" key={0}>Loading ...</div>}
+    >
+        <Row>
+        {items}
+        </Row>
+    </InfiniteScroll>
 }

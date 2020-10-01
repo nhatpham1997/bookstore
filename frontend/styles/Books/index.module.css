@@ -1,33 +1,3 @@
-.product_item:hover {
-    cursor: pointer;
-}
-
-.item_image {
-    width: 100%;
-    overflow: hidden;
-}
-
-.item_image img {
-    width: 100%;
-    height: auto;
-}
-
-.item_info {
-    margin: 20px 25px;
-}
-
-.item_info h3 {
-    font-size: 18px;
-    font-weight: 300;
-    margin: 0;
-}
-
-.item_info small {
-    color: #adb5bd;
-}
-
-.item_info p {
-    font-size: 18px;
-    font-weight: 300;
-    margin-top: 30px;
+.products {
+    display: flex;
 }

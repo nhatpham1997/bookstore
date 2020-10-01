@@ -74,6 +74,12 @@ export default function Footer() {
                         </ul>
                     </div>
                 </Col>
+                <Col>
+                    <div className={styles.copyright}>
+                        © Copyright 2020 | Frontend by
+                        <a href="https://www.facebook.com/quangnhat1997/"> Nhật</a>
+                    </div>
+                </Col>
             </Row>
         </Container>
     )

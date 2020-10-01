@@ -13,8 +13,8 @@ export default function NavCom() {
                 <Navbar.Collapse id="responsive-navbar-nav">
                     <Nav className="mr-auto">
                         <Link href="/"><a>Home</a></Link>
-                        <Link href="/books?page=1"><a>Books</a></Link>
-                        <Link href="#"><a>Library</a></Link>
+                        <Link href="/books"><a>Books</a></Link>
+                        <Link href="/library"><a>Library</a></Link>
                         <Link href="#"><a>Journal</a></Link>
                         <Link href="#"><a>Buy Now</a></Link>
                     </Nav>
