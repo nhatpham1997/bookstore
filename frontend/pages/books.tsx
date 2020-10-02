@@ -372,23 +372,7 @@ export default function Books({ sidebar }: BooksProps) {
                         <Sidebar books={sidebar} />
                     </Col>
                     <Col sm="9">
-                        
-                            {/* {books?.map((item) => (
-                                <Col sm="4" key={item.id}>
-                                    <Link href="/book/[id]" as={`/book/${item.id}`}>
-                                        <div className={styles.product_item}>
-                                            <div className={styles.item_image}>
-                                                <img src={item.picture}></img>
-                                            </div>
-                                            <div className={styles.item_info}>
-                                                <h3>{item.name}</h3>
-                                                <small>{item.category}</small>
-                                                <p>€{item.price}</p>
-                                            </div>
-                                        </div>
-                                    </Link>
-                                </Col> */}
-                                <InfiniteLoading/>
+                        <InfiniteLoading />
                     </Col>
                 </Row>
             </Container>
