@@ -1,10 +1,10 @@
 const httpStatus = require('http-status');
-const Author = require('../models/author.model');
+const Language = require('../models/language.model');
 
 exports.load = async (req, res, next, id) => {
     try {
-        const author = await Author.get(id);
-        req.locals = {author};
+        const language = await Language.get(id);
+        req.locals = {language};
         return next();
     } catch (error) {
         return next(error);
@@ -13,10 +13,10 @@ exports.load = async (req, res, next, id) => {
 
 exports.create = async (req, res, next) => {
     try {
-        let author = await new Author(req.body).save();
+        let language = await new Language(req.body).save();
         res.status(httpStatus.CREATED);
-        author = await author.transform();
-        return res.json(author);
+        language = await language.transform();
+        return res.json(language);
     } catch (error) {
         return next(error);
     }
@@ -24,9 +24,9 @@ exports.create = async (req, res, next) => {
 
 exports.get = async (req, res, next) => {
     try {
-        const author = req.locals.author.transform();
+        const language = req.locals.language.transform();
         console.log(req.locals);
-        return res.json({author});
+        return res.json({language});
     } catch (error) {
         return next(error);
     }
@@ -34,9 +34,9 @@ exports.get = async (req, res, next) => {
 
 exports.update = async (req, res, next) => {
     try {
-        const author = Object.assign(req.locals.author, req.body);
-        let savedAuthor = await author.save();
-        return res.json(savedAuthor.transform());
+        const language = Object.assign(req.locals.language, req.body);
+        let savedLanguage = await language.save();
+        return res.json(savedLanguage.transform());
     } catch (error) {
         return next(error);
     }
@@ -44,7 +44,8 @@ exports.update = async (req, res, next) => {
 
 exports.list = async (req, res, next) => {
     try {
-        const authors = await Author.find();
+        const languages = await Language.find();
+        return res.json(languages);
     } catch (error) {
         return next(error);
     }
@@ -52,9 +53,9 @@ exports.list = async (req, res, next) => {
 
 exports.remove = async (req, res, next) => {
     try {
-        const author = req.locals.author;
-        let authorRemoved = await author.remove();
-        return res.json(authorRemoved.transform());
+        const language = req.locals.language;
+        let languageRemoved = await language.remove();
+        return res.json(languageRemoved.transform());
     } catch (error) {
         return next(error);
     }

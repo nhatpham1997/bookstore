@@ -7,44 +7,44 @@ const bookSchema = new mongoose.Schema(
     name: {
       type: String,
       trim: true,
-      required: true,
+      required: true
     },
     categoryId: {
       type: mongoose.Types.ObjectId,
-      ref: "Category",
+      ref: "Category"
     },
     authorId: {
       type: mongoose.Types.ObjectId,
-      ref: "Author",
+      ref: "Author"
     },
     publisherId: {
       type: mongoose.Types.ObjectId,
-      ref: "Publisher",
+      ref: "Publisher"
     },
-    language: {
-      type: String,
-      required: true,
+    languageId: {
+      type: mongoose.Types.ObjectId,
+      ref: "Language"
     },
     yearPublished: {
       type: String,
-      required: true,
+      required: true
     },
     picture: [String],
     descriptions: {
-      type: String,
+      type: String
     },
-    page: {
+    pages: {
       type: String,
-      required: true,
+      required: true
     },
     price: Number,
     extant: Number,
-    sale: Number,
+    sale: Number
   },
   { timestamps: true }
 );
 
-bookSchema.static = {
+bookSchema.statics = {
   /**
    *
    * @param {ObjectId} id - the objectId of book
@@ -57,8 +57,9 @@ bookSchema.static = {
       if (mongoose.Types.ObjectId.isValid(id)) {
         book = await this.findById(id)
           .populate("categoryId", "id name descriptions")
-          .populate("authorId", "id name born descriptions picture category")
+          .populate("authorId", "id name born descriptions picture")
           .populate("publisherId", "id name descriptions")
+          .populate("languageId", "id name")
           .exec();
       }
 
@@ -85,11 +86,11 @@ bookSchema.method({
       "categoryId",
       "authorId",
       "publisherId",
-      "language",
-      "yearPublisherId",
+      "languageId",
+      "yearPublished",
       "picture",
       "descriptions",
-      "page",
+      "pages",
       "price",
       "extant",
       "sale",

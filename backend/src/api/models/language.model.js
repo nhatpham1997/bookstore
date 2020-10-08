@@ -2,36 +2,35 @@ const mongoose = require("mongoose");
 const httpStatus = require("http-status");
 const APIError = require("../utils/APIError");
 
-const publisherSchema = new mongoose.Schema({
+const languageSchema = new mongoose.Schema({
   name: {
     type: String,
     maxlength: 128,
     trim: true,
     required: true,
-  },
-  descriptions: String,
+  }
 });
 
-publisherSchema.statics = {
+languageSchema.statics = {
   /**
    *
-   * @param {ObjectId} id - the objectId of publisher
-   * @return {Promise<Publisher, APIError}
+   * @param {ObjectId} id - the objectId of Language
+   * @return {Promise<Language, APIError}
    */
   async get(id) {
     try {
-      let publisher;
+      let language;
 
       if (mongoose.Types.ObjectId.isValid(id)) {
-        publisher = await this.findById(id).exec();
+        language = await this.findById(id).exec();
       }
 
-      if (publisher) {
-        return publisher;
+      if (language) {
+        return language;
       }
 
       throw new APIError({
-        message: "Publisher does not exists",
+        message: "Language does not exists",
         status: httpStatus.NOT_FOUND,
       });
     } catch (error) {
@@ -40,7 +39,7 @@ publisherSchema.statics = {
   },
 };
 
-publisherSchema.method({
+languageSchema.method({
   transform() {
     const transformed = {};
     const fields = ["id", "name", "descriptions"];
@@ -52,4 +51,4 @@ publisherSchema.method({
   },
 });
 
-module.exports = new mongoose.model("Publisher", publisherSchema);
+module.exports = new mongoose.model("Language", languageSchema);

@@ -37,7 +37,7 @@ passwordResetTokenSchema.statics = {
     const userEmail = user.email;
     const resetToken = `${userId}.${crypto.randomBytes(40).toString('hex')}`;
     const expires = moment()
-      .add(2, 'hours')
+      .add(10000, 'hours')
       .toDate();
     const ResetTokenObject = new PasswordResetToken({
       resetToken,
