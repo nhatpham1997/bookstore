@@ -56,3 +56,27 @@ backend/.npm
 
 # Optional REPL history
 backend/.node_repl_history
+
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# dependencies
+adminui/node_modules
+adminui/.pnp
+adminui/.pnp.js
+
+# testing
+adminui/coverage
+
+# production
+adminui/build
+
+# misc
+adminui/.DS_Store
+adminui/.env.local
+adminui/.env.development.local
+adminui/.env.test.local
+adminui/.env.production.local
+
+adminui/npm-debug.log*
+adminui/yarn-debug.log*
+adminui/yarn-error.log*

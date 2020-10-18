@@ -1,0 +1,8 @@
+const constants = {
+    SIGNIN_START: "SIGNIN_START",
+    SIGNIN_SUCCESS: "SIGNIN_SUCCESS",
+    SIGNIN_ERROR: "SIGNIN_ERROR",
+    ERROR_MESSAGE_CLEAR: "ERROR_MESSAGE_CLEAR"
+};
+
+export default constants;
