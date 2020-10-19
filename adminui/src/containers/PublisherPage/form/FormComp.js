@@ -1,9 +1,8 @@
-import React, { useState } from "react";
-import { Button, Modal, Form, Input } from "antd";
+import React from 'react';
 import actions from "./actions";
 import { useDispatch } from "react-redux";
 
-function PublisherPage() {
+const FormComp = () => {
     const dispatch = useDispatch();
     const [visible, setVisible] = useState(false);
     const showModal = () => {
@@ -15,8 +14,10 @@ function PublisherPage() {
     const onFinish = (values) => {
         dispatch(actions.doCreate(values));
     };
-    return (
-        <div>
+    
+    const renderForm = () => {
+        return (
+            <div>
             <Button type="primary" onClick={showModal}>
                 Tạo
             </Button>
@@ -57,7 +58,9 @@ function PublisherPage() {
             </Modal>
             <Button>Export to Excel</Button>
         </div>
-    );
-}
+        )
+    }
+    return renderForm();
+};
 
-export default PublisherPage;
+export default FormComp;

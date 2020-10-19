@@ -4,44 +4,48 @@ import {
     MenuUnfoldOutlined,
     MenuFoldOutlined,
     UserOutlined,
-    VideoCameraOutlined,
-    UploadOutlined,
 } from "@ant-design/icons";
 
 const { Header, Sider, Content } = AntLayout;
 
-const Layout = () => {
+const Layout = ({ children }) => {
     const [collapsed, setCollapsed] = useState(false);
     const doToggleMenu = () => {
         setCollapsed(!collapsed);
     };
     return (
-        <Layout>
-            <Sider trigger={null} collapsible collapsed={collapsed}>
+        <AntLayout>
+            <Sider
+                trigger={null}
+                
+                collapsed={collapsed}
+                style={{ height: "100vh" }}
+                collapsedWidth={0}
+            >
                 <div className="logo" />
                 <Menu theme="dark" mode="inline" defaultSelectedKeys={["1"]}>
                     <Menu.Item key="1" icon={<UserOutlined />}>
-                        nav 1
-                    </Menu.Item>
-                    <Menu.Item key="2" icon={<VideoCameraOutlined />}>
-                        nav 2
-                    </Menu.Item>
-                    <Menu.Item key="3" icon={<UploadOutlined />}>
-                        nav 3
+                         Publisher
                     </Menu.Item>
                 </Menu>
             </Sider>
-            <Layout className="site-layout">
+            <AntLayout>
                 <Header
-                    className="site-layout-background"
-                    style={{ padding: 0 }}
+                    style={{ background: "white", padding: "0px 20px" }}
                 >
-                    {React.createElement(
-                        collapsed ? MenuUnfoldOutlined : MenuFoldOutlined,
-                        {
-                            className: "trigger",
-                            onClick: doToggleMenu(),
-                        }
+                    
+                    {collapsed ? (
+                        <MenuUnfoldOutlined
+                            // className="trigger"
+                            onClick={doToggleMenu}
+                            size={22}
+                        />
+                    ) : (
+                        <MenuFoldOutlined
+                            // className="trigger"
+                            onClick={doToggleMenu}
+                            size={22}
+                        />
                     )}
                 </Header>
                 <Content
@@ -50,12 +54,13 @@ const Layout = () => {
                         margin: "24px 16px",
                         padding: 24,
                         minHeight: 280,
+                        background: "white"
                     }}
                 >
-                    Content
+                    {children}
                 </Content>
-            </Layout>
-        </Layout>
+            </AntLayout>
+        </AntLayout>
     );
 };
 
