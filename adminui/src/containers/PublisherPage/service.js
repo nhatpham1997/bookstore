@@ -12,6 +12,7 @@ const services = {
     },
 
     createFn: async (publisher) => {
+        console.log(publisher);
         const response = await api.post("/publisher", publisher);
         return response;
     },

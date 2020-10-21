@@ -5,7 +5,7 @@ const api = axios.create({
 });
 
 const getToken = ()=>{
-    let info = window.localStorage.getItem('kauth')
+    let info = window.localStorage.getItem('auth')
     info = JSON.parse(info)
     if(info && info.token){
         let token = info.token.accessToken;

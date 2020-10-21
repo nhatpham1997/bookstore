@@ -43,7 +43,7 @@ publisherSchema.statics = {
 publisherSchema.method({
   transform() {
     const transformed = {};
-    const fields = ["id", "name", "descriptions"];
+    const fields = ["_id", "name", "descriptions"];
 
     fields.forEach((field) => {
       transformed[field] = this[field];

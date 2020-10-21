@@ -18,7 +18,7 @@ const selectErrorCode = error => {
 
 const login = () =>{
     if(window){
-    window.localStorage.removeItem("kauth");
+    window.localStorage.removeItem("auth");
     }
     getHistory().push('/signin')
 
@@ -40,6 +40,15 @@ export default class Errors {
                 title: selectErrorMessage(error)
             });
         }
+
+        if (
+            errorCode === httpStatus.BAD_REQUEST
+        ) {
+            Modal.error({
+                title: selectErrorMessage(error)
+            });
+        }
+
             
         if (errorCode === httpStatus.UNAUTHORIZED){
             Modal.confirm({

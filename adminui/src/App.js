@@ -4,18 +4,33 @@ import { ConnectedRouter } from "connected-react-router";
 import { getHistory, configStore } from "./containers/configureStore";
 import Layout from "./containers/Layout";
 import PublisherPage from "./containers/PublisherPage";
+import SigninPage from "./containers/SigninPage";
+
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
 const store = configStore();
 
 function App() {
     return (
-        <Provider store={store}>
-            <ConnectedRouter history={getHistory()}>
-                <Layout>
-                    <PublisherPage />
-                </Layout>
-            </ConnectedRouter>
-        </Provider>
+        <Router>
+            <Provider store={store}>
+                <ConnectedRouter history={getHistory()}>
+                    <Switch>
+                        <Route path="/publisher" exact>
+                            <Layout>
+                                <PublisherPage />
+                            </Layout>
+                        </Route>
+                        <Route path="/signin" exact>
+                            <SigninPage />
+                        </Route>
+                        <Route path="/">
+                            <PublisherPage />
+                        </Route>
+                    </Switch>
+                </ConnectedRouter>
+            </Provider>
+        </Router>
     );
 }
 
