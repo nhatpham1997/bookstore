@@ -1,19 +1,9 @@
 import axios from 'axios';
-
+import getToken from '../untils/getToken';
 const api = axios.create({
     baseURL: process.env.REACT_APP_API_URI
 });
 
-const getToken = ()=>{
-    let info = window.localStorage.getItem('auth')
-    info = JSON.parse(info)
-    if(info && info.token){
-        let token = info.token.accessToken;
-        return token;
-                  
-    }
-    return null
-}
 
 api.interceptors.request.use(
     config => {

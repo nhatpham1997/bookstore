@@ -51,12 +51,12 @@ export default class Errors {
 
             
         if (errorCode === httpStatus.UNAUTHORIZED){
-            Modal.confirm({
-                title: selectErrorMessage(error),
-                okText: "Login",
-                cancelText: "Dismiss",
-                onOk: () => login()
-            });
+            // Modal.confirm({
+            //     title: selectErrorMessage(error),
+            //     okText: "Login",
+            //     cancelText: "Dismiss",
+            //     onOk: () => login()
+            // });
         } 
         return;
     }

@@ -5,7 +5,7 @@ import {
     MenuFoldOutlined,
     UserOutlined,
 } from "@ant-design/icons";
-
+import { Link } from "react-router-dom";
 const { Header, Sider, Content } = AntLayout;
 
 const Layout = ({ children }) => {
@@ -17,23 +17,19 @@ const Layout = ({ children }) => {
         <AntLayout>
             <Sider
                 trigger={null}
-                
                 collapsed={collapsed}
                 style={{ height: "100vh" }}
                 collapsedWidth={0}
             >
                 <div className="logo" />
                 <Menu theme="dark" mode="inline" defaultSelectedKeys={["1"]}>
-                    <Menu.Item key="1" icon={<UserOutlined />}>
-                         Publisher
+                    <Menu.Item key="publisher" icon={<UserOutlined />}>
+                        <Link to="/publisher">Publisher</Link>
                     </Menu.Item>
                 </Menu>
             </Sider>
             <AntLayout>
-                <Header
-                    style={{ background: "white", padding: "0px 20px" }}
-                >
-                    
+                <Header style={{ background: "white", padding: "0px 20px" }}>
                     {collapsed ? (
                         <MenuUnfoldOutlined
                             // className="trigger"
@@ -54,7 +50,7 @@ const Layout = ({ children }) => {
                         margin: "24px 16px",
                         padding: 24,
                         minHeight: 280,
-                        background: "white"
+                        background: "white",
                     }}
                 >
                     {children}
