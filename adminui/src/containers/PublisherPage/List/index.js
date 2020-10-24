@@ -69,6 +69,7 @@ function List() {
                 columns={columns}
                 dataSource={data}
                 pagination={false}
+                scroll={{ y: "500px" }}
             />
         </div>
     );

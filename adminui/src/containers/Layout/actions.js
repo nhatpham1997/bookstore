@@ -21,7 +21,7 @@ const actions = {
     },
 
     doSignout: () => {
-        window.localStorage.removeItem("ssauth");
+        window.localStorage.removeItem("auth");
         getHistory().push("/signin");
     },
 };
