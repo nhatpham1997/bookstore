@@ -4,6 +4,7 @@ import { ConnectedRouter } from "connected-react-router";
 import { getHistory, configStore } from "./containers/configureStore";
 import Layout from "./containers/Layout";
 import PublisherPage from "./containers/PublisherPage";
+import CategoryPage from "./containers/CategoryPage";
 import SigninPage from "./containers/SigninPage";
 import PrivateRoute from "./containers/shared/routes/PrivateRoute";
 import AuthRoute from "./containers/shared/routes/AuthRoute";
@@ -26,14 +27,28 @@ function App() {
                                 </Layout>
                             )}
                         ></PrivateRoute>
-                        <AuthRoute path="/signin" exact component={SigninPage}>
-                        </AuthRoute>
-                        <PrivateRoute path="/" component={() => (
+                        <PrivateRoute
+                            path="/category"
+                            exact
+                            component={() => (
+                                <Layout>
+                                    <CategoryPage />
+                                </Layout>
+                            )}
+                        ></PrivateRoute>
+                        <AuthRoute
+                            path="/signin"
+                            exact
+                            component={SigninPage}
+                        ></AuthRoute>
+                        <PrivateRoute
+                            path="/"
+                            component={() => (
                                 <Layout>
                                     <div>Home Page</div>
                                 </Layout>
-                            )}>
-                        </PrivateRoute>
+                            )}
+                        ></PrivateRoute>
                     </Switch>
                 </ConnectedRouter>
             </Provider>

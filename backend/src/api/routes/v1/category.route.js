@@ -11,7 +11,7 @@ router.param("categoryId", controller.load);
 router
   .route("/")
   .post(authorize(LOGGED_USER), validate(createCategory), controller.create)
-  .get(authorize(LOGGED_USER), validate(getCategory), controller.list);
+  .get(authorize(LOGGED_USER), controller.list);
 
 router
   .route("/:categoryId")
