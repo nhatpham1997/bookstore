@@ -52,6 +52,9 @@ const Layout = ({ children }) => {
                     <Menu.Item icon={<UserOutlined />} key="/category" >
                         <Link to="/category">Category</Link>
                     </Menu.Item>
+                    <Menu.Item icon={<UserOutlined />} key="/author" >
+                        <Link to="/author">Author</Link>
+                    </Menu.Item>
                 </Menu>
             </Sider>
             <AntLayout>

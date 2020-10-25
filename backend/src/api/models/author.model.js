@@ -31,7 +31,7 @@ authorSchema.statics = {
 
       if (mongoose.Types.ObjectId.isValid(id)) {
         author = await this.findById(id)
-          .populate("categoryId", "id name descriptions")
+          .populate("categoryId", "_id name descriptions")
           .exec();
       }
 
@@ -53,7 +53,7 @@ authorSchema.method({
   transform() {
     const transformed = {};
     const fields = [
-      "id",
+      "_id",
       "name",
       "born",
       "died",

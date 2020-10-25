@@ -5,6 +5,7 @@ import { getHistory, configStore } from "./containers/configureStore";
 import Layout from "./containers/Layout";
 import PublisherPage from "./containers/PublisherPage";
 import CategoryPage from "./containers/CategoryPage";
+import AuthorPage from "./containers/AuthorPage";
 import SigninPage from "./containers/SigninPage";
 import PrivateRoute from "./containers/shared/routes/PrivateRoute";
 import AuthRoute from "./containers/shared/routes/AuthRoute";
@@ -33,6 +34,15 @@ function App() {
                             component={() => (
                                 <Layout>
                                     <CategoryPage />
+                                </Layout>
+                            )}
+                        ></PrivateRoute>
+                        <PrivateRoute
+                            path="/author"
+                            exact
+                            component={() => (
+                                <Layout>
+                                    <AuthorPage />
                                 </Layout>
                             )}
                         ></PrivateRoute>
