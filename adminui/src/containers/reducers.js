@@ -4,6 +4,7 @@ import signin from "./SigninPage/reducer";
 import publisher from "./PublisherPage/reducer";
 import category from "./CategoryPage/reducer";
 import author from "./AuthorPage/reducer";
+import book from "./BookPage/reducer";
 
 export default (history) =>
     combineReducers({
@@ -11,5 +12,6 @@ export default (history) =>
         signin,
         publisher,
         category,
-        author
+        author,
+        book
     });

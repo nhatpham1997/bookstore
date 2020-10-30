@@ -24,4 +24,6 @@ router
   .put(authorize(LOGGED_USER), validate(updateBook), controller.update)
   .delete(authorize(LOGGED_USER), validate(removeBook), controller.remove);
 
+router.route("/photos").post(authorize(LOGGED_USER), controller.addPhoto)
+
 module.exports = router;

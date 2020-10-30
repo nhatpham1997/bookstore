@@ -6,6 +6,7 @@ import Layout from "./containers/Layout";
 import PublisherPage from "./containers/PublisherPage";
 import CategoryPage from "./containers/CategoryPage";
 import AuthorPage from "./containers/AuthorPage";
+import BookPage from "./containers/BookPage";
 import SigninPage from "./containers/SigninPage";
 import PrivateRoute from "./containers/shared/routes/PrivateRoute";
 import AuthRoute from "./containers/shared/routes/AuthRoute";
@@ -43,6 +44,15 @@ function App() {
                             component={() => (
                                 <Layout>
                                     <AuthorPage />
+                                </Layout>
+                            )}
+                        ></PrivateRoute>
+                        <PrivateRoute
+                            path="/book"
+                            exact
+                            component={() => (
+                                <Layout>
+                                    <BookPage />
                                 </Layout>
                             )}
                         ></PrivateRoute>

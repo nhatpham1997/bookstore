@@ -21,4 +21,7 @@ module.exports = {
     username: process.env.EMAIL_USERNAME,
     password: process.env.EMAIL_PASSWORD,
   },
+  photoDirectory: process.env.PHOTOS_DIRECTORY,
+  photoTypes: ["image/png", "image/jpg", "image/jpeg", "image/gif"],
+  photoLimitSize: 8097152,
 };

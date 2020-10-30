@@ -29,7 +29,7 @@ const bookSchema = new mongoose.Schema(
       type: String,
       required: true
     },
-    picture: [String],
+    photos: [String],
     descriptions: {
       type: String
     },
@@ -56,10 +56,10 @@ bookSchema.statics = {
 
       if (mongoose.Types.ObjectId.isValid(id)) {
         book = await this.findById(id)
-          .populate("categoryId", "id name descriptions")
-          .populate("authorId", "id name born descriptions picture")
-          .populate("publisherId", "id name descriptions")
-          .populate("languageId", "id name")
+          .populate("categoryId", "_id name descriptions")
+          .populate("authorId", "_id name born descriptions picture")
+          .populate("publisherId", "_id name descriptions")
+          .populate("languageId", "_id name")
           .exec();
       }
 
@@ -81,14 +81,14 @@ bookSchema.method({
   transform() {
     const transformed = {};
     const fields = [
-      "id",
+      "_id",
       "name",
       "categoryId",
       "authorId",
       "publisherId",
       "languageId",
       "yearPublished",
-      "picture",
+      "photos",
       "descriptions",
       "pages",
       "price",
