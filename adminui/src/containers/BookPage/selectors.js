@@ -17,7 +17,7 @@ const selectIsModalShow = createSelector(
 const selectSaveLoading = createSelector(
     [selectRaw],
     (book) => book.saveLoading
-)
+);
 
 const selectors = {
     selectBooks,

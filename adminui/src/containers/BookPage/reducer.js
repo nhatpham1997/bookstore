@@ -52,7 +52,7 @@ const bookReducer = (state = initialState, { type, payload }) =>
                 draft.saveLoading = false;
                 draft.error = null;
                 state.books.forEach((item, index) => {
-                    if (item._id == payload._id) {
+                    if (item._id === payload._id) {
                         draft.books[index] = payload;
                     }
                 });
@@ -71,11 +71,23 @@ const bookReducer = (state = initialState, { type, payload }) =>
                 draft.destroyLoading = false;
                 console.log(payload);
                 draft.books = state.books.filter(
-                    (item) => item._id != payload._id
+                    (item) => item._id !== payload._id
                 );
                 draft.error = null;
                 break;
             case constants.BOOK_DESTROY_ERROR:
+                draft.destroyLoading = false;
+                draft.error = payload;
+                break;
+            case constants.BOOK_PHOTO_DESTROY_START:
+                draft.destroyLoading = true;
+                draft.error = null;
+                break;
+            case constants.BOOK_PHOTO_DESTROY_SUCCESS:
+                draft.destroyLoading = false;
+                draft.error = null;
+                break;
+            case constants.BOOK_PHOTO_DESTROY_ERROR:
                 draft.destroyLoading = false;
                 draft.error = payload;
                 break;

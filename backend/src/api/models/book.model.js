@@ -29,7 +29,10 @@ const bookSchema = new mongoose.Schema(
       type: String,
       required: true
     },
-    photos: [String],
+    photos: [{
+      name: String,
+      path: String
+    }],
     descriptions: {
       type: String
     },

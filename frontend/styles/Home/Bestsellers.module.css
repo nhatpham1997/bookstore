@@ -16,8 +16,19 @@
   font-size: 15px;
 }
 
+.section {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-padding: 48px;
+  padding-bottom: 32px;
+  -webkit-overflow-scrolling: touch;
+}
+
 .item_slick {
   margin-top: 10px;
+  scroll-snap-align: start;
+  text-align: center;
 }
 .item_slick:hover {
   cursor: pointer;

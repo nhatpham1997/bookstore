@@ -26,6 +26,11 @@ const services = {
         const response = await api.delete(`/book/${id}`);
         return response;
     },
+
+    destroyPhoto: async (id, bookId) => {
+        const response = await api.delete(`book/photos/${bookId}/${id}`);
+        return response;
+    }
 };
 
 export { services };

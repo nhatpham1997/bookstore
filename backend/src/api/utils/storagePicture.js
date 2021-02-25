@@ -12,8 +12,8 @@ module.exports = {
       if (math.indexOf(file.mimetype) === -1) {
         return callback("Only .png, .jpg and .jpeg format allowed!", null);
       }
-      let imageName = `${Date.now()}-${uuidv4()}`;
-      //   .${file.originalname.split(".").pop()}
+      let imageName = `${Date.now()}-${uuidv4()}.${file.originalname.split(".").pop()}`;
+      
       callback(null, imageName);
     },
   }),

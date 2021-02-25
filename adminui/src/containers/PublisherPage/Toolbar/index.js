@@ -5,7 +5,7 @@ import constants from "../constants";
 import { useDispatch, useSelector } from "react-redux";
 import selectors from "../selectors";
 
-function PublisherPage() {
+function Toolbar() {
     const visible = useSelector(selectors.selectIsModalShow);
     const dispatch = useDispatch();
 
@@ -24,4 +24,4 @@ function PublisherPage() {
     );
 }
 
-export default PublisherPage;
+export default Toolbar;

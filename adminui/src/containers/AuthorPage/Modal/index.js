@@ -15,7 +15,7 @@ const formTailLayout = {
     wrapperCol: { span: 18, offset: 6 },
 };
 
-function AuthorPage({ visible, setVisible }) {
+function ModalAuthor({ visible, setVisible }) {
     const dispatch = useDispatch();
     const author = useSelector(selectors.selectAuthor);
     const categories = useSelector(categorySelectors.selectCategories);
@@ -151,4 +151,4 @@ function AuthorPage({ visible, setVisible }) {
     );
 }
 
-export default AuthorPage;
+export default ModalAuthor;

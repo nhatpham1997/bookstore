@@ -14,7 +14,7 @@ const formTailLayout = {
     wrapperCol: { span: 18, offset: 6 },
 };
 
-function PublisherPage({ visible, setVisible }) {
+function ModalPublisher({ visible, setVisible }) {
     const dispatch = useDispatch();
     const publisher = useSelector(selectors.selectPublisher);
     const onCancel = () => {
@@ -101,4 +101,4 @@ function PublisherPage({ visible, setVisible }) {
     );
 }
 
-export default PublisherPage;
+export default ModalPublisher;

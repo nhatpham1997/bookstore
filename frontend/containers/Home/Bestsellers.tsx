@@ -11,23 +11,6 @@ export interface BestsellersProps {
 }
 
 export default function Bestsellers({ books }: BestsellersProps) {
-    const responsive = {
-        desktop: {
-            breakpoint: { max: 3000, min: 1024 },
-            items: 5,
-            slidesToSlide: 1, // optional, default to 1.
-        },
-        tablet: {
-            breakpoint: { max: 1024, min: 464 },
-            items: 3,
-            slidesToSlide: 1 // optional, default to 1.
-        },
-        mobile: {
-            breakpoint: { max: 464, min: 0 },
-            items: 2,
-            slidesToSlide: 1 // optional, default to 1.
-        }
-    };
     return (
         <Container className={styles.bestsellers}>
             <Row>
@@ -36,23 +19,18 @@ export default function Bestsellers({ books }: BestsellersProps) {
                     <small>Top selling books of 2020</small>
                 </Col>
                 <Col sm="12">
-                    <Carousel
-                        responsive={responsive}
-                        autoPlay={true}
-                        autoPlaySpeed={3000}
-                        ssr={true}
-                    >
+                    <div className={styles.section}>
                         {books?.map((item) => (
                             <Link key={item.id} href="/book/[id]" as={`/book/${item.id}`}>
                                 <div key={item.id} className={styles.item_slick}>
-                                    <img src={item.picture}></img>
+                                    <img src={`${process.env.PHOTOS_API_URL}/${item.photos[0].path}`}></img>
                                     <h3>{item.name}</h3>
                                     <p>{item.category}</p>
                                     <a>€ {item.price}</a>
                                 </div>
                             </Link>
                         ))}
-                    </Carousel>
+                    </div>
                 </Col>
             </Row>
         </Container>

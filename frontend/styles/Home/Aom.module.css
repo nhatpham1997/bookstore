@@ -40,14 +40,22 @@
 
 .author_content .list_item {
   display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-padding: 48px;
+  padding-bottom: 32px;
+  -webkit-overflow-scrolling: touch;
 }
 
 .author_content .list_item .book_item {
-  width: 25%;
+  padding: 0 25px;
+  scroll-snap-align: start;
+  text-align: center;
 }
 .author_content .list_item .book_item img {
-  width: 100%;
+  width: 164px;
   height: auto;
+  padding: 15px 0;
 }
 .author_content .list_item .book_item h3 {
   font-size: 18px;

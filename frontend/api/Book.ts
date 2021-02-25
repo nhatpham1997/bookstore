@@ -7,7 +7,7 @@ export interface BookModel {
     language: string;
     pages: number;
     yearPublished: number;
-    picture: string;
+    photos: [];
     price: number;
     descriptions: string;
 }

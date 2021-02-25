@@ -54,7 +54,6 @@ const actions = {
                 payload: response.data,
             });
             message.success("Xóa thành công");
-
         } catch (error) {
             Errors.handle(error);
             dispatch({
@@ -77,6 +76,24 @@ const actions = {
             Errors.handle(error);
             dispatch({
                 type: constants.BOOK_UPDATE_ERROR,
+            });
+        }
+    },
+    doDestroyFile: (id, bookId) => async (dispatch) => {
+        try {
+            dispatch({ type: constants.BOOK_PHOTO_DESTROY_START });
+
+            let response = await services.destroyPhoto(id, bookId);
+
+            dispatch({
+                type: constants.BOOK_PHOTO_DESTROY_SUCCESS,
+                payload: response.data,
+            });
+            message.success("Xóa ảnh thành công");
+        } catch (error) {
+            Errors.handle(error);
+            dispatch({
+                type: constants.BOOK_PHOTO_DESTROY_ERROR,
             });
         }
     },

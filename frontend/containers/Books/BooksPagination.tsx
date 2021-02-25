@@ -5,7 +5,6 @@ import PageItem from 'react-bootstrap/PageItem'
 import { useRouter } from "next/router";
 import getAsString from '../../getAsString';
 
-
 export interface BooksPaginationProps {
   totalPages: number;
 }

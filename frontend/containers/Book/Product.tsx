@@ -12,6 +12,7 @@ export interface ProductProps {
 }
 
 export default function Product({ book }: ProductProps) {
+    console.log(book);
     const [count, setcount] = useState(0);
     const [rating, setrating] = useState(0);
     const changeRating = (newRating) => {
@@ -32,7 +33,7 @@ export default function Product({ book }: ProductProps) {
             <Container>
                 <Row>
                     <Col sm="5">
-                        <img src={book.picture} className={styles.product_img} />
+                        <img src={`${process.env.PHOTOS_API_URL}/${book.photos[0].path}`} className={styles.product_img} />
                     </Col>
                     <Col sm="7">
                         <div className={styles.product_title}>

@@ -3,6 +3,8 @@ const httpStatus = require("http-status");
 const storagePhoto = require("../utils/storagePicture");
 const multer = require("multer");
 const path = require("path");
+const { v4: uuidv4 } = require('uuid');
+const {staticUrl} = require("../../config/vars");
 
 exports.load = async (req, res, next, id) => {
   try {
@@ -83,10 +85,10 @@ exports.remove = async (req, res, next) => {
   }
 };
 
-let photosUploadFile = multer(storagePhoto).single("");
+let photosUploadFile = multer(storagePhoto).single("photos");
 
-exports.addPhoto = async (req, res, next) => {
-  photosUploadFile(req, res, async(err) => {
+exports.addPhotos = (req, res, next) => {
+  photosUploadFile(req, res, async (err) => {
     try {
       if (!req.file) {
       console.log(err);
@@ -94,26 +96,36 @@ exports.addPhoto = async (req, res, next) => {
         message: err,
         status: httpStatus.BAD_REQUEST,
       });
-      }
-      let outputFile = req.file.path + ".jpg";
+    }
 
-      await sharp(req.file.path).jpeg({ quality: 80 }).toFile(outputFile);
+    req.locals.book.photos.push({
+      name: req.file.originalname,
+      path: req.file.path,
+    });
 
-      // delete old file
-      fs.unlinkSync(req.file.path);
+    const book = await req.locals.book.save();
 
-      let temp = {
-        uid: uuidv4(),
-        name: `${req.file.filename}.jpg`,
-        path: `/images/message/${req.file.filename}.jpg`,
-        status: "done",
-        response: { status: "success" },
-        linkProps: { download: "image" },
-        thumbUrl: `${staticUrl}/images/message/${req.file.filename}.jpg`,
-      };
-      return res.json(temp);
+    let temp = {
+      uid: uuidv4(),
+      name: `${req.file.filename}`,
+      path: `${staticUrl}/books/${req.file.filename}`,
+      status: "done",
+      response: { status: "success" },
+      linkProps: { download: "image" },
+      thumbUrl: `${staticUrl}/books/${req.file.filename}`,
+    };
+    return res.json(temp);
     } catch (error) {
       next(error);
     }
-  })
+});
+};
+
+exports.removePhotos = async (req, res, next) => {
+  try {
+    const book = await req.locals.book.update({ $pull: { photos: { _id: req.params.id } } }, { safe: true, upsert: true });
+    return res.json({message: "success"});
+  } catch (error) {
+    return next(error);
+  }
 }

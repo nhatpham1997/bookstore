@@ -14,7 +14,7 @@ const formTailLayout = {
     wrapperCol: { span: 18, offset: 6 },
 };
 
-function CategoryPage({ visible, setVisible }) {
+function ModalCategory({ visible, setVisible }) {
     const dispatch = useDispatch();
     const category = useSelector(selectors.selectCategory);
     const onCancel = () => {
@@ -101,4 +101,4 @@ function CategoryPage({ visible, setVisible }) {
     );
 }
 
-export default CategoryPage;
+export default ModalCategory;

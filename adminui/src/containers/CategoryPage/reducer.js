@@ -53,7 +53,7 @@ const categoryReducer = (state = initialState, { type, payload }) =>
                 draft.saveLoading = false;
                 draft.error = null;
                 state.categories.forEach((item, index) => {
-                    if (item._id == payload._id) {
+                    if (item._id === payload._id) {
                         draft.categories[index] = payload;
                     }
                 });
@@ -71,7 +71,7 @@ const categoryReducer = (state = initialState, { type, payload }) =>
                 draft.destroyLoading = false;
                 console.log(payload);
                 draft.categories = state.categories.filter(
-                    (item) => item._id != payload._id
+                    (item) => item._id !== payload._id
                 );
                 draft.error = null;
                 break;

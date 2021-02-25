@@ -5,7 +5,7 @@ import constants from "../constants";
 import { useDispatch, useSelector } from "react-redux";
 import selectors from "../selectors";
 
-function BookPage() {
+function Toolbar() {
     const visible = useSelector(selectors.selectIsModalShow);
     const dispatch = useDispatch();
 
@@ -24,4 +24,4 @@ function BookPage() {
     );
 }
 
-export default BookPage;
+export default Toolbar;

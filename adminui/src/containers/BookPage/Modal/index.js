@@ -8,6 +8,7 @@ import selectors from "../selectors";
 import categorySelectors from "../../CategoryPage/selectors";
 import authorSelectors from "../../AuthorPage/selectors";
 import publisherSelectors from "../../PublisherPage/selectors";
+import {isAuthenticated} from "../../shared/routes/permissionChecker";
 
 const formItemLayout = {
     labelCol: { span: 6 },
@@ -18,7 +19,7 @@ const formTailLayout = {
     wrapperCol: { span: 18, offset: 6 },
 };
 
-function AuthorPage({ visible, setVisible }) {
+function ModalBook({ visible, setVisible }) {
     const dispatch = useDispatch();
     const book = useSelector(selectors.selectBook);
     const categories = useSelector(categorySelectors.selectCategories);
@@ -57,23 +58,6 @@ function AuthorPage({ visible, setVisible }) {
             return `Tạo mới`;
         }
     };
-
-    const fileList = [
-        {
-            uid: "-1",
-            name: "xxx.png",
-            status: "done",
-            url:
-                "https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png",
-            thumbUrl:
-                "https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png",
-        },
-        {
-            uid: "-2",
-            name: "yyy.png",
-            status: "error",
-        },
-    ];
 
     return (
         <Modal
@@ -114,7 +98,7 @@ function AuthorPage({ visible, setVisible }) {
                 >
                     <Select>
                         {categories?.map((item, index) => (
-                            <Select.Option value={item._id}>
+                            <Select.Option key={index} value={item._id}>
                                 {item?.name}
                             </Select.Option>
                         ))}
@@ -135,7 +119,7 @@ function AuthorPage({ visible, setVisible }) {
                 >
                     <Select>
                         {authors?.map((item, index) => (
-                            <Select.Option value={item._id}>
+                            <Select.Option key={index} value={item._id}>
                                 {item?.name}
                             </Select.Option>
                         ))}
@@ -158,7 +142,7 @@ function AuthorPage({ visible, setVisible }) {
                 >
                     <Select>
                         {publishers?.map((item, index) => (
-                            <Select.Option value={item._id}>
+                            <Select.Option key={index} value={item._id}>
                                 {item?.name}
                             </Select.Option>
                         ))}
@@ -187,8 +171,7 @@ function AuthorPage({ visible, setVisible }) {
                     rules={[
                         {
                             required: true,
-                            min: 1960,
-                            max: 2020,
+
                         },
                     ]}
                 >
@@ -222,27 +205,6 @@ function AuthorPage({ visible, setVisible }) {
                 >
                     <Input />
                 </Form.Item>
-                <Form.Item
-                    {...formItemLayout}
-                    label="Picture"
-                    name="picture"
-                    initialValue={book ? book?.picture : ""}
-                    // rules={[
-                    //     {
-                    //         required: true,
-                    //         min: 3,
-                    //         max: 2000,
-                    //     },
-                    // ]}
-                >
-                    <Upload
-                        action="https://www.mocky.io/v2/5cc8019d300000980a055e76"
-                        listType="picture"
-                        defaultFileList={[...fileList]}
-                    >
-                        <Button icon={<UploadOutlined />}>Upload</Button>
-                    </Upload>
-                </Form.Item>
                 <Form.Item {...formTailLayout}>
                     <Button type="primary" htmlType="submit">
                         {getButton()}
@@ -253,4 +215,4 @@ function AuthorPage({ visible, setVisible }) {
     );
 }
 
-export default AuthorPage;
+export default ModalBook;

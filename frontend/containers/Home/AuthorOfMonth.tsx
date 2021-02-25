@@ -10,6 +10,7 @@ export interface AuthorOfMonthProps {
 }
 
 export default function AuthorOfMonth({ books }: AuthorOfMonthProps) {
+    console.log(books);
     return (
         <Container className={styles.aofm}>
             <Row>
@@ -42,7 +43,7 @@ export default function AuthorOfMonth({ books }: AuthorOfMonthProps) {
                                         {books?.map((item) => (
                                             <Link key={item.id} href="/book/[id]" as={`/book/${item.id}`}>
                                                 <div className={styles.book_item}>
-                                                    <img src={item.picture}></img>
+                                                    <img src={`${process.env.PHOTOS_API_URL}/${item.photos[0].path}`}></img>
                                                     <h3>{item.name}</h3>
                                                     <p>{item.category}</p>
                                                     <a>€ {item.price}</a>

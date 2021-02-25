@@ -53,7 +53,7 @@ const authorReducer = (state = initialState, { type, payload }) =>
                 draft.saveLoading = false;
                 draft.error = null;
                 state.authors.forEach((item, index) => {
-                    if (item._id == payload._id) {
+                    if (item._id === payload._id) {
                         draft.authors[index] = payload;
                     }
                 });
@@ -72,7 +72,7 @@ const authorReducer = (state = initialState, { type, payload }) =>
                 draft.destroyLoading = false;
                 console.log(payload);
                 draft.authors = state.authors.filter(
-                    (item) => item._id != payload._id
+                    (item) => item._id !== payload._id
                 );
                 draft.error = null;
                 break;
