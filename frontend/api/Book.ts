@@ -1,13 +1,13 @@
 export interface BookModel {
-    id: number;
+    _id: number;
     name: string;
     category: string;
-    author: string;
-    publisher: string;
+    authorId: BookModel;
+    publisherId: BookModel;
     language: string;
     pages: number;
+    photos: BookModel;
     yearPublished: number;
-    photos: [];
     price: number;
     descriptions: string;
 }

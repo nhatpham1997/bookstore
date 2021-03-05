@@ -19,4 +19,6 @@ router
   .put(authorize(LOGGED_USER), validate(updateAuthor), controller.update)
   .delete(authorize(LOGGED_USER), validate(removeAuthor), controller.remove);
 
+router.route("/photos/:authorId").post(authorize(LOGGED_USER), controller.addPhotos);
+
 module.exports = router;

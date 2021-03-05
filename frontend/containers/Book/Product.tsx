@@ -6,6 +6,7 @@ import styles from '../../styles/Book/Product.module.css';
 import { useState } from "react";
 import cls from 'classnames';
 import StarRatings from 'react-star-ratings';
+import {formatCurrency} from '../../utils';
 
 export interface ProductProps {
     book: BookModel;
@@ -52,7 +53,7 @@ export default function Product({ book }: ProductProps) {
                         </div>
                         <div className={styles.product_content}>
                             <p>{book.descriptions}</p>
-                            <div className={styles.price_styles}>€{book.price}</div>
+                            <div className={styles.price_styles}>{formatCurrency(book.price)}</div>
                         </div>
                         <div className={styles.add_product}>
                             <div className="input-group inline-group">

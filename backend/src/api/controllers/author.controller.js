@@ -1,5 +1,9 @@
 const httpStatus = require("http-status");
 const Author = require("../models/author.model");
+const storagePhoto = require("../utils/storagePicture");
+const multer = require("multer");
+const { v4: uuidv4 } = require('uuid');
+const {staticUrl} = require("../../config/vars");
 
 exports.load = async (req, res, next, id) => {
   try {
@@ -65,4 +69,40 @@ exports.remove = async (req, res, next) => {
   } catch (error) {
     return next(error);
   }
+};
+
+let photosUploadFile = multer(storagePhoto).single("photos");
+
+exports.addPhotos = (req, res, next) => {
+  photosUploadFile(req, res, async (err) => {
+    try {
+      if (!req.file) {
+      console.log(err);
+      throw new APIError({
+        message: err,
+        status: httpStatus.BAD_REQUEST,
+      });
+    }
+
+    req.locals.book.photos.push({
+      name: req.file.originalname,
+      path: req.file.path,
+    });
+
+    const book = await req.locals.book.save();
+
+    let temp = {
+      uid: uuidv4(),
+      name: `${req.file.filename}`,
+      path: `${staticUrl}/books/${req.file.filename}`,
+      status: "done",
+      response: { status: "success" },
+      linkProps: { download: "image" },
+      thumbUrl: `${staticUrl}/books/${req.file.filename}`,
+    };
+    return res.json(temp);
+    } catch (error) {
+      next(error);
+    }
+});
 };

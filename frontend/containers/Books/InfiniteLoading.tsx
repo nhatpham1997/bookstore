@@ -4,13 +4,14 @@ import Col from "react-bootstrap/Col";
 import Link from "next/link";
 import styles from '../../styles/Books/InfiniteLoading.module.css';
 import Row from "react-bootstrap/Row";
+import {formatCurrency} from '../../utils';
 
 export default function InfiniteLoading(books) {
     const [hasMoreItems, sethasMoreItems] = useState(true);
-    const [totalBooks, settotalBooks] = useState([]);
+    const [totalBooks, setTotalBooks] = useState(books.books);
     const totalPage = Math.ceil(books.books.length/3);
     const items = [];
-    books.books.map((item) => {
+    totalBooks?.map((item) => {
         items.push(
             <Col sm="4" key={item._id}>
                 <Link href="/book/[id]" as={`/book/${item._id}`}>
@@ -21,7 +22,7 @@ export default function InfiniteLoading(books) {
                         <div className={styles.item_info}>
                             <h3>{item.name}</h3>
                             <small>{item.categoryId.name}</small>
-                            <p>€{item.price}</p>
+                            <p>{formatCurrency(item.price)}</p>
                         </div>
                     </div>
                 </Link>
@@ -35,7 +36,7 @@ export default function InfiniteLoading(books) {
             sethasMoreItems(false);
         }else {
             const moreBooks = books.books.slice(ofset + ofset*page, limit*page);
-            setBooks(books.books.concat(moreBooks))
+            setTotalBooks(books.books.concat(moreBooks))
         }
     }
 

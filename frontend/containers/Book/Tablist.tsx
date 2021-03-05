@@ -2,8 +2,6 @@ import Tabs from 'react-bootstrap/Tabs';
 import Tab from 'react-bootstrap/Tab';
 import Table from 'react-bootstrap/Table';
 import { BookModel } from '../../api/Book';
-import Link from 'next/link';
-import styles from '../../styles/Book/Tablist.module.css';
 
 export interface TablistProps {
     book: BookModel;
@@ -11,35 +9,28 @@ export interface TablistProps {
 
 export default function Tablist({book}: TablistProps) {
     return (
-        <Tabs defaultActiveKey="profile" id="uncontrolled-tab-example" defaultActiveKey="additional information">
-            <Tab eventKey="additional information" title="Additional information">
+        <Tabs defaultActiveKey="additional information" id="uncontrolled-tab-example">
+            <Tab eventKey="additional information" title="Thông tin chi tiết">
                 <Table striped hover>
                     <tbody>
                         <tr>
-                            <td>BOOK AUTHOR</td>
-                            <td><Link href="#"><a className={styles.link}>{book.author}</a></Link></td>
+                            <td>Tác giả</td>
+                            <td>{book.authorId.name}</td>
                         </tr>
                         <tr>
-                            <td>PUBLISHER</td>
-                            <td><Link href="#"><a className={styles.link}>{book.publisher}</a></Link></td>
+                            <td>Nhà xuất bản</td>
+                            <td>{book.publisherId.name}</td>
                         </tr>
                         <tr>
-                            <td>LANGUAGE</td>
-                            <td><Link href="#"><a className={styles.link}>{book.language}</a></Link></td>
+                            <td>Số trang</td>
+                            <td>{book.pages}</td>
                         </tr>
                         <tr>
-                            <td>PAGES</td>
-                            <td><Link href="#"><a className={styles.link}>{book.pages}</a></Link></td>
-                        </tr>
-                        <tr>
-                            <td>YEAR PUBLISHED</td>
-                            <td><Link href="#"><a className={styles.link}>{book.yearPublished}</a></Link></td>
+                            <td>Năm xuất bản</td>
+                            <td>{book.yearPublished}</td>
                         </tr>
                     </tbody>
                 </Table>
-            </Tab>
-            <Tab eventKey="reviews" title="Reviews (0)">
-                <div>Reviews</div>
             </Tab>
         </Tabs>
     )

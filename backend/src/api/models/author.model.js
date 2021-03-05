@@ -12,7 +12,10 @@ const authorSchema = new mongoose.Schema({
   born: String,
   died: String,
   descriptions: String,
-  picture: [String],
+  photos: [{
+    name: String,
+    path: String
+  }],
   categoryId: {
     type: mongoose.Types.ObjectId,
     ref: "Category",

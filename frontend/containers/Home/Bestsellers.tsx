@@ -5,6 +5,7 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Link from 'next/link';
 import styles from '../../styles/Home/Bestsellers.module.css';
+import {formatCurrency} from '../../utils';
 
 export interface BestsellersProps {
     books: BookModel[];
@@ -21,12 +22,12 @@ export default function Bestsellers({ books }: BestsellersProps) {
                 <Col sm="12">
                     <div className={styles.section}>
                         {books?.map((item) => (
-                            <Link key={item.id} href="/book/[id]" as={`/book/${item.id}`}>
-                                <div key={item.id} className={styles.item_slick}>
+                            <Link key={item._id} href="/book/[id]" as={`/book/${item._id}`}>
+                                <div key={item._id} className={styles.item_slick}>
                                     <img src={`${process.env.PHOTOS_API_URL}/${item.photos[0].path}`}></img>
                                     <h3>{item.name}</h3>
                                     <p>{item.category}</p>
-                                    <a>€ {item.price}</a>
+                                    <a>{formatCurrency(item.price)}</a>
                                 </div>
                             </Link>
                         ))}
